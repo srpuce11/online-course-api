@@ -92,9 +92,15 @@ public class LectureController {
     @GetMapping("/course/{courseId}/lectures/download/{fileName:.+}")
     public ResponseEntity<Resource> downloadFile(@PathVariable Long courseId, @PathVariable String fileName) {
         Path filePath = fileStorageService.loadFileAsResource(fileName);
+
+//        Optional<Lecture> optionalLecture = lectureService.getLectureById(id);
+//        if (optionalLecture.isPresent()) {
+//            String videoLink = optionalLecture.get().getVideoUrl();
+//        }
+
         Resource resource;
         try {
-            resource = new PathResource(filePath.toUri());
+            resource = new PathResource(filePath);
             System.out.println("Resource: " + resource.getURI());
             System.out.println("Resource exists: " + resource.exists());
             System.out.println("Resource is readable: " + resource.isReadable());
