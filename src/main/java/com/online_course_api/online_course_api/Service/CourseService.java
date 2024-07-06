@@ -1,11 +1,10 @@
 package com.online_course_api.online_course_api.Service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.online_course_api.online_course_api.ResourceNotFoundException;
 import com.online_course_api.online_course_api.repository.CourseRepository;
 import com.online_course_api.online_course_api.repository.entity.Course;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -44,5 +43,10 @@ public class CourseService {
     public void deleteCourse(Long id) {
         Course course = getCourseById(id);
         courseRepository.delete(course);
+    }
+
+    public List<Course> getCourseByTeacherId(int teacherId) {
+
+        return courseRepository.getCourseByTeacherId(teacherId);
     }
 }
