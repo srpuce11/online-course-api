@@ -23,7 +23,7 @@ import java.util.Optional;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api")
+@RequestMapping("/api/courses")
 public class LectureController {
     @Autowired
     private LectureService lectureService;
@@ -47,7 +47,7 @@ public class LectureController {
         Lecture lecture = new ObjectMapper().readValue(lectureJson, Lecture.class);
         String fileName = fileStorageService.storeFile(file);
         String fileDownloadUri = ServletUriComponentsBuilder
-                .fromPath("C:/Users/12sun/Videos/")
+                .fromPath("/Videos/edu-app/")
                 .path(fileName)
                 .toUriString();
         lecture.setVideoUrl(fileDownloadUri);
@@ -60,7 +60,7 @@ public class LectureController {
 
         String fileName = fileStorageService.storeFile(file);
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path("/api/videos/download/")
+                .path("/Videos/edu-app")
                 .path(fileName)
                 .toUriString();
         lectureDetails.setVideoUrl(fileDownloadUri);

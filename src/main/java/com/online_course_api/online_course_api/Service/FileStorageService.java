@@ -16,7 +16,7 @@ public class FileStorageService {
     private final Path fileStorageLocation;
 
     public FileStorageService() {
-        this.fileStorageLocation = Paths.get("C:/Users/12sun/Videos").toAbsolutePath().normalize();
+        this.fileStorageLocation = Paths.get("/Videos/edu-app").toAbsolutePath().normalize();
 
         try {
             Files.createDirectories(this.fileStorageLocation);
