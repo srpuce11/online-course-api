@@ -47,7 +47,7 @@ public class LectureController {
         Lecture lecture = new ObjectMapper().readValue(lectureJson, Lecture.class);
         String fileName = fileStorageService.storeFile(file);
         String fileDownloadUri = ServletUriComponentsBuilder
-                .fromPath("/Videos/edu-app/")
+                .fromPath("/")
                 .path(fileName)
                 .toUriString();
         lecture.setVideoUrl(fileDownloadUri);
@@ -60,7 +60,8 @@ public class LectureController {
 
         String fileName = fileStorageService.storeFile(file);
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path("/Videos/edu-app")
+//                .path("/api/videos/download/")
+        		.path("/edu-app/")
                 .path(fileName)
                 .toUriString();
         lectureDetails.setVideoUrl(fileDownloadUri);
